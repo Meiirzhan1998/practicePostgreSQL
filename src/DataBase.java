@@ -1,5 +1,4 @@
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DataBase {
@@ -15,7 +14,6 @@ public class DataBase {
     public void connectToDB() throws SQLException {
         connect = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
-
 
     public void addStudent(Students s) {
         PreparedStatement pt = null;
