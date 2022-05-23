@@ -49,25 +49,34 @@ public class DataBase {
     }
 
     public void findById() throws SQLException {
+        while (true) {
+            System.out.println("Студенттің ID енгізіңіз: ");
+            System.out.println("Шығу үшін 0 басыңыз ");
+            Scanner sc = new Scanner(System.in);
+            int command = sc.nextInt();
 
-        System.out.println("Введите ID студента: ");
-        Scanner sc = new Scanner(System.in);
-        int command = sc.nextInt();
-        if (command == 1) {
-            Statement st = connect.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM students WHERE id=1");
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") + " " + rs.getString("first_name")+ " " + rs.getString("middle_name")+ " " + rs.getString("last_name")+ " " + rs.getInt("age"));
-            }
-        } else if (command == 2) {
-            Statement st = connect.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM students WHERE id=2");
-            while (rs.next()) {
-                System.out.println(rs.getInt("id") + " " + rs.getString("first_name")+ " " + rs.getString("middle_name")+ " " + rs.getString("last_name")+ " " + rs.getInt("age"));
-            }
+            if (command == 1) {
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery("SELECT * FROM students WHERE id=1");
 
-        }else {
-            System.err.println("Команда не распознана");
+                while (rs.next()) {
+                    System.out.println(rs.getInt("id") + " " + rs.getString("first_name") + " " + rs.getString("middle_name") + " " + rs.getString("last_name") + " " + rs.getInt("age"));
+                }
+            } else if (command == 2) {
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery("SELECT * FROM students WHERE id=2");
+                while (rs.next()) {
+                    System.out.println(rs.getInt("id") + " " + rs.getString("first_name") + " " + rs.getString("middle_name") + " " + rs.getString("last_name") + " " + rs.getInt("age"));
+                }
+
+
+            } else if (command == 0) {
+                System.exit(0);
+
+            } else {
+                System.err.println("Команда не распознана");
+            }
         }
     }
 }
+
