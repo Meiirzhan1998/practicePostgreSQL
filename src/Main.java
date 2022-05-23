@@ -1,5 +1,7 @@
 import java.io.*;
 import java.sql.SQLException;
+import java.util.Scanner;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -16,5 +18,6 @@ public class Main {
         for(int i = 0 ; i<students.length;i++){
             db.addStudent(students[i]);
         }
+        db.findById();
     }
 }
