@@ -16,21 +16,6 @@ public class DataBase {
         connect = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
 
-    public ArrayList<Students> getAllStudents() throws SQLException {
-        ArrayList<Students> students = new ArrayList<>();
-        PreparedStatement pt = connect.prepareStatement("SELECT * FROM students");
-        ResultSet rs = pt.executeQuery();
-        while (rs.next()) {
-            Long id = rs.getLong("id");
-            String firstName = rs.getString("first_name");
-            String middleName = rs.getString("middle_name");
-            String lastName = rs.getString("last_name");
-            int age = rs.getInt("age");
-            students.add(new Students(id, firstName, middleName, lastName, age));
-
-        }
-        return students;
-    }
 
     public void addStudent(Students s) {
         PreparedStatement pt = null;
@@ -68,8 +53,6 @@ public class DataBase {
                 while (rs.next()) {
                     System.out.println(rs.getInt("id") + " " + rs.getString("first_name") + " " + rs.getString("middle_name") + " " + rs.getString("last_name") + " " + rs.getInt("age"));
                 }
-
-
             } else if (command == 0) {
                 System.exit(0);
 
