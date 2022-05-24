@@ -17,6 +17,8 @@ public class Main {
         for (int i = 0; i < students.length; i++) {
             db.addStudent(students[i]);
         }
+
         db.findById();
+
     }
 }
