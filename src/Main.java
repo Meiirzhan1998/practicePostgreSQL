@@ -14,7 +14,7 @@ public class Main {
 //        }
         DataBase db = new DataBase();
         db.connectToDB();
-        for(int i = 0 ; i<students.length;i++){
+        for (int i = 0; i < students.length; i++) {
             db.addStudent(students[i]);
         }
         db.findById();

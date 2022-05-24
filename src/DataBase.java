@@ -32,32 +32,25 @@ public class DataBase {
     }
 
     public void findById() throws SQLException {
+        int command;
         while (true) {
             System.out.println("Студенттің ID енгізіңіз: ");
             System.out.println("Шығу үшін 0 басыңыз ");
             Scanner sc = new Scanner(System.in);
-            int command = sc.nextInt();
+            command = sc.nextInt();
+            Statement st = connect.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM students WHERE id=" + command);
 
-            if (command == 1) {
-                Statement st = connect.createStatement();
-                ResultSet rs = st.executeQuery("SELECT * FROM students WHERE id=1");
-
-                while (rs.next()) {
-                    System.out.println(rs.getInt("id") + " " + rs.getString("first_name") + " " + rs.getString("middle_name") + " " + rs.getString("last_name") + " " + rs.getInt("age"));
-                }
-            } else if (command == 2) {
-                Statement st = connect.createStatement();
-                ResultSet rs = st.executeQuery("SELECT * FROM students WHERE id=2");
-                while (rs.next()) {
-                    System.out.println(rs.getInt("id") + " " + rs.getString("first_name") + " " + rs.getString("middle_name") + " " + rs.getString("last_name") + " " + rs.getInt("age"));
-                }
-            } else if (command == 0) {
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") + " " + rs.getString("first_name") + " " + rs.getString("middle_name") + " " + rs.getString("last_name") + " " + rs.getInt("age"));
+            }
+            if(command==0){
                 System.exit(0);
-
-            } else {
-                System.err.println("Команда не распознана");
             }
         }
+
+
     }
 }
+
 
